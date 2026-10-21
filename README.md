@@ -1,23 +1,26 @@
-# New World — exploration prototype
+# New World — Heaven & Earth
 
-A real-time 2D RPG foundation with a top-down tile perspective inspired by classic handheld adventure games. Original procedural pixel scenery; no game assets or dependencies required.
+A browser RPG exploration foundation with a permanent home dimension and seeded overworlds. Plain HTML/CSS/JavaScript; no build required.
 
 ## Play
 
-Open `index.html`, or visit https://jabadudi.github.io/New-World/ . Move with WASD, arrow keys, or the on-screen directional buttons. Press M or click the minimap to open the atlas. Water, mountain ridges, and the outer boundary block movement; woodland can be traversed. Paths connect the starting clearing to four discoverable landmarks.
+https://jabadudi.github.io/New-World/
 
-## World and exploration
+- WASD / arrows / touch directional buttons: real-time movement.
+- H or **Teleport home**: instantly leave an expedition for your separate home in heaven. There is no cooldown or cost.
+- **Return to exploration** at home: return to the same seed and exact coordinates you left, with discovery and traveled route intact.
+- **Explore a new world** at home: generate a new seed and teleport to a random safe point on its connected path network. Existing worlds stay in your world list.
+- Select an older world and **Visit selected world** to resume that world's saved position.
+- M or the minimap: view the current dimension's atlas. Overworld maps remember revealed terrain, landmarks, and the trail of visited tiles. The home map shows the whole island.
 
-Each new world generates a seeded 192 × 192 tile landscape with water, banks, trails, meadows, woodland, and ridges. Terrain is deterministic for its seed. The camera follows a temporary explorer character. This is a finite exploration prototype; quests, NPCs, combat, creatures, and the final setting are not implemented yet.
+First-time players begin on the home island. The sanctuary, glowing gate, spring, and gardens are scenery in this prototype. Use the sidebar travel buttons to travel; no proximity to the gate is required. Buildings do not yet have interiors. Story, NPCs, enemies, combat, and base construction are future work.
 
-The minimap reveals terrain within eight tiles as you walk. Discovered terrain remains visible permanently, including after you leave that area. The atlas shows all discovered terrain, a permanent tile-based history of your traveled route, discovered landmarks, the starting point, and your current position. It does not yet offer waypoint routing or a chronological replay.
+## Saving
 
-The world seed, position, discovered terrain, and travel trail save automatically in browser local storage every two seconds and when you leave the page. Saves stay with this browser and site origin. If storage is blocked, a message explains that progress lasts only for the session. New World asks before replacing the current save. The previous terrain-painting prototype uses a separate storage key.
+Home position, active dimension, world seeds, exact expedition positions, discovered tiles, and visited trails persist in local browser storage. Autosaves occur every two seconds, on dimension travel, and when leaving the page. Old v2 exploration saves migrate automatically and become available through Return to exploration. Each seed reconstructs its own deterministic 192 × 192 landscape. Previously visited worlds remain available. Storage is limited by the browser; if full or blocked, an in-game message reports that the session cannot be saved. Saves are local to the browser and site, without account sync.
 
-## Hosting
+## Hosting and verification
 
-Plain HTML/CSS/JavaScript; no build step. GitHub Pages serves the repository root from main. Push changes to update it. Google Fonts is optional and falls back to system fonts offline.
+GitHub Pages serves main at the repository root. Versioned asset URLs refresh the replacement scripts and stylesheet. The loading overlay displays a runtime error if the world cannot initialize.
 
-## Verification
-
-JavaScript syntax checked. A mocked browser runtime checks deterministic terrain generation, distinct seeds, reachable landmarks across four seeds, world bounds, movement, rendering calls, discovery and route persistence, save validation, and atlas toggling. Full visual browser verification was unavailable in the development environment.
+Checked JavaScript syntax, rendered both dimensions with an actual Canvas implementation, and inspected the resulting images. Automated runtime checks cover safe spawns, movement, deterministic terrain, dimension switching, exact return coordinates, preserved home position, multiple archived worlds, per-world map/trail retention, reloading in either dimension, and v2 save migration. Browser layout and input verification remain unconfirmed because browser preview access was blocked.
